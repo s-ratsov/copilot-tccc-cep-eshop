@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap");
+
+:root {
+  --bg: #f6f2e9;
+  --panel: #fffdf8;
+  --ink: #1f2a37;
+  --accent: #c24d2c;
+  --accent-strong: #8f2d15;
+  --accent-soft: #f7d8c8;
+  --line: #dfd5c9;
+  --ok: #1f7a4c;
+  --shadow: 0 16px 40px rgba(31, 42, 55, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 20%, #ffe8d8 0%, var(--bg) 44%),
+    radial-gradient(circle at 80% 85%, #f4e8ff 0%, var(--bg) 42%);
+  min-height: 100vh;
+}
+
+.background-shape {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.45;
+}
+
+.background-shape.one {
+  width: 280px;
+  height: 280px;
+  background: #f7b88f;
+  top: -80px;
+  right: -60px;
+}
+
+.background-shape.two {
+  width: 260px;
+  height: 260px;
+  background: #bac7ff;
+  bottom: -80px;
+  left: -60px;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 94vw);
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.left-column {
+  padding: 24px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 2.3rem);
+}
+
+.hero small {
+  font-family: "IBM Plex Mono", monospace;
+  color: #6a7380;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.input,
+select,
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.input,
+select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.slider-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.slider-row input {
+  width: 100%;
+}
+
+.slider-row span {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.product-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+  transform: translateY(8px);
+  opacity: 0;
+  animation: reveal 0.3s ease forwards;
+}
+
+@keyframes reveal {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.product-card p {
+  margin: 0 0 10px;
+  color: #57606a;
+  font-size: 0.9rem;
+  min-height: 40px;
+}
+
+.price {
+  font-family: "IBM Plex Mono", monospace;
+  margin-bottom: 10px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  background: #fff;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+
+button.primary:hover {
+  background: var(--accent-strong);
+}
+
+.cart-panel {
+  padding: 20px;
+  position: sticky;
+  top: 24px;
+  height: fit-content;
+}
+
+.cart-panel h2 {
+  margin-top: 0;
+}
+
+.cart-item {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.cart-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.qty-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.qty-actions button {
+  padding: 4px 8px;
+}
+
+.cart-total {
+  border-top: 1px solid var(--line);
+  margin-top: 14px;
+  padding-top: 10px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.badge {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+}
+
+.detail-layout {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.back-link {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.meta-box {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+
+.empty-state {
+  color: #6a7380;
+  padding: 6px;
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-panel {
+    position: static;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
